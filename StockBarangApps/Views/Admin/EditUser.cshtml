@@ -1,0 +1,78 @@
+﻿@model EditUserViewModel
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Edit User</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form role="form" asp-action="EditUser" method="post">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="Id">User Id</label>
+                                        <input class="form-control" asp-for="Id" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="UserName">User Name</label>
+                                        <input class="form-control" asp-for="UserName" placeholder="User Name">
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Email">E-Mail</label>
+                                        <input class="form-control" asp-for="Email" placeholder="Email">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>User Roles</h3>
+                            </div>
+                            <div class="card-body">
+                                @if (Model.Roles.Any())
+                                {
+                                    foreach (var role in Model.Roles)
+                                    {
+                                        <ul>
+                                            <li>@role</li>
+                                        </ul>
+                                    }
+                                }
+                                else
+                                {
+                                    <h5 class="card-title">User Belum Memiliki Roles</h5>
+                                }
+                            </div>
+                            <div class="card-footer">
+                                <a asp-action="ManageUserRoles" asp-route-userId="@Model.Id" style="width:auto" class="btn btn-outline-success">
+                                    Manage Roles
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

@@ -1,0 +1,53 @@
+﻿@model TambahUserViewModel
+@{
+    ViewData["Title"] = "Tambah User";
+}
+
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-warning">
+                            <div class="card-header">
+                                <h3 class="card-title">Tambah User</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+
+                            <form role="form" asp-action="AddUser" method="post">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="Email">E-Mail</label>
+                                        <input class="form-control" asp-for="Email" placeholder="Masukkan E-Mail">
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Password">Password</label>
+                                        <input class="form-control" asp-for="Password" placeholder="Password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="KonfirmasiPassword">Konfirmasi Password</label>
+                                        <input class="form-control" asp-for="KonfirmasiPassword" placeholder="Konfirmasi Password">
+                                        <span asp-validation-for="KonfirmasiPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-warning">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

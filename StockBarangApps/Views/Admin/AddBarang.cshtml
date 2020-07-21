@@ -1,0 +1,59 @@
+﻿@model TambahBarangViewModel;
+
+@{
+    ViewData["Title"] = "Tambah Barang";
+}
+
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Tambah Barang</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+
+                            <form role="form" asp-action="AddBarang" method="post">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="NamaBarang">Nama Barang</label>
+                                        <input class="form-control" asp-for="NamaBarang" placeholder="Nama Barang">
+                                        <span asp-validation-for="NamaBarang" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="AsalBarang"></label>
+                                        <input class="form-control" asp-for="AsalBarang" placeholder="Asal Barang">
+                                        <span asp-validation-for="AsalBarang" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Tanggal">Tanggal:</label>
+                                        <input class="form-control" asp-for="Tanggal" placeholder="Tanggal">
+                                        <span asp-validation-for="Tanggal" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="JumlahBarang">Jumlah Barang</label>
+                                        <input class="form-control" asp-for="JumlahBarang" placeholder="Jumlah Barang">
+                                        <span asp-validation-for="JumlahBarang" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

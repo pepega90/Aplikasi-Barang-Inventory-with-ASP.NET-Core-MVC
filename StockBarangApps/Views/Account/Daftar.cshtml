@@ -1,0 +1,58 @@
+﻿@model RegisViewModel
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="~/Theme/index2.html"><b>Aplikasi Barang Inventory PT. Pantat Babi Bersinar</b></a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">User Registration</p>
+
+                <form asp-action="Daftar" method="post">
+                    <div class="input-group mb-3">
+                        <input asp-for="Email" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="Password" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="KonfirmasiPassword" class="form-control" placeholder="Konfirmasi Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <p class="mt-4 mb-1">
+                    <a asp-action="Login">Kembali</a>
+                </p>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+</body>

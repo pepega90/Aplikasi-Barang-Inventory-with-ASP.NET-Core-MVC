@@ -1,0 +1,50 @@
+﻿@model List<StockBarangApps.ViewModels.UserViewModel.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Add or Remove User Role";
+    var userId = ViewBag.userId;
+}
+
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Add or Remove User Role</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form method="post">
+                                <div class="card-body">
+                                    @for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        <div class="form-check m-1">
+                                            <input type="hidden" asp-for="@Model[i].RoleId" />
+                                            <input type="hidden" asp-for="@Model[i].RoleName" />
+                                            <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                                            <label class="form-check-label" asp-for="@Model[i].IsSelected">
+                                                @Model[i].RoleName
+                                            </label>
+                                        </div>
+                                    }
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success">Update User Role</button>
+                                    <a asp-action="EditUser" class="btn btn-success" asp-route-Id="@userId">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

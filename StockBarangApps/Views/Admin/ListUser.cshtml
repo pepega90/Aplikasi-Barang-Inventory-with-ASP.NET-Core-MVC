@@ -1,0 +1,76 @@
+﻿@inject UserManager<IdentityUser> userManager
+
+@{
+    ViewData["Title"] = "Daftar User";
+    // Untuk tabel nomor urut
+    int angka = 0;
+}
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Daftar User</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <a asp-action="AddUser" class="btn btn-primary">Tambah User</a>
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>User Id</th>
+                                            <th>E-Mail</th>
+                                            <th>Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var user in userManager.Users)
+                                        {
+                                            var roles = await userManager.GetRolesAsync(user);
+                                            ++angka;
+                                            <tr>
+                                                <td>@angka</td>
+                                                <td>
+                                                    @user.Id
+                                                </td>
+                                                <td>@user.Email</td>
+                                                <td>
+                                                    @if (roles.Any())
+                                                    {
+                                                        @foreach (var item in roles)
+                                                        {
+                                                            @item
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>Tidak Ada</p>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <form asp-action="HapusUser" asp-route-Id="@user.Id">
+                                                        <a asp-action="EditUser" asp-route-Id="@user.Id" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
+                                                        <button type="submit" class="btn btn-danger">Hapus <i class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

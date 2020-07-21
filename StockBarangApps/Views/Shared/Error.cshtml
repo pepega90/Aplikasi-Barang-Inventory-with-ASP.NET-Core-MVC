@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "500 Error";
+}
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="error-page">
+                <h2 class="headline text-danger">500</h2>
+
+                <div class="error-content">
+                    <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Keliatannya Ada Sesuatu Yang Salah</h3>
+
+                    <p>
+                        Kami akan segera memperbaikinya.
+                        Untuk sementara kamu bisa <a asp-action="Beranda" asp-controller="Admin">Kembali Ke Halaman Utama</a>
+                    </p>
+                </div>
+            </div>
+            <!-- /.error-page -->
+        </section>
+    </div>
+</body>

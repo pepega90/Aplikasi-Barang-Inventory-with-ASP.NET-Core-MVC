@@ -1,0 +1,81 @@
+﻿@model PaginatedList<BarangMasuk>
+
+@{
+    ViewData["Title"] = "Stock Barang";
+    // Untuk nomor urut
+    int angka = 0;
+}
+
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Stock Barang</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kode Barang</th>
+                                            <th>Nama Barang</th>
+                                            <th>Tanggal</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var barang in Model)
+                                        {
+                                            ++angka;
+                                            <tr>
+                                                <td>@angka</td>
+                                                <td>
+                                                    @barang.KodeBarang
+                                                </td>
+                                                <td>@barang.NamaBarang</td>
+                                                <td>@barang.Tanggal?.ToShortDateString()</td>
+                                                <td>@barang.JumlahBarang</td>
+                                                @*<td>
+                                    <form asp-action="Hapus" asp-route-id="@barang.Id">
+                                        <a asp-action="EditBarang" asp-route-id="@barang.Id" class="btn btn-success">Edit</a>
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </form>
+                                </td>*@
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        @{
+                            var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.NextPage ? "disabled" : "";
+
+
+                            <a asp-action="StockBarang"
+                               asp-route-page="@(Model.PageIndex - 1)"
+                               class="btn btn-default @prevDisabled">
+                                Previous
+                            </a>
+                            <a class="btn btn-default">@Model.PageIndex</a>
+                            <a asp-action="StockBarang"
+                               asp-route-page="@(Model.PageIndex + 1)"
+                               class="btn btn-default @nextDisabled">
+                                Next
+                            </a>
+                        }
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

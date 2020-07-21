@@ -1,0 +1,89 @@
+﻿@model PaginatedList<BarangMasuk>
+@inject SignInManager<IdentityUser> signInManager
+
+@{
+    ViewData["Title"] = "Barang Masuk";
+    // Untuk tabel nomor urut
+    int angka = 0;
+}
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Barang Masuk</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <a asp-action="CetakBarangMasuk" class="btn btn-primary"><i class="fas fa-download"></i> Cetak Barang Masuk</a>
+                                @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="AddBarang" class="btn btn-primary">Tambah Barang</a>
+                                }
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kode Barang</th>
+                                            <th>Nama Barang</th>
+                                            <th>Asal Barang</th>
+                                            <th>Tanggal Masuk</th>
+                                            <th>Jumlah</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var barang in Model)
+                                        {
+                                            ++angka;
+                                            <tr>
+                                                <td>@angka</td>
+                                                <td>
+                                                    @barang.KodeBarang
+                                                </td>
+                                                <td>@barang.NamaBarang</td>
+                                                <td>@barang.AsalBarang</td>
+                                                <td>@barang.Tanggal?.ToShortDateString()</td>
+                                                <td>@barang.JumlahBarang</td>
+                                                <td>
+                                                    <form asp-action="HapusMasuk" asp-route-id="@barang.Id">
+                                                        <a asp-action="EditBarang" asp-route-id="@barang.Id" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
+                                                        <button type="submit" class="btn btn-danger">Hapus <i class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        @{
+                            var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.NextPage ? "disabled" : "";
+
+
+                            <a asp-action="ListBarangMasuk"
+                               asp-route-page="@(Model.PageIndex - 1)"
+                               class="btn btn-default @prevDisabled">
+                                Previous
+                            </a>
+                            <a class="btn btn-default">@Model.PageIndex</a>
+                            <a asp-action="ListBarangMasuk"
+                               asp-route-page="@(Model.PageIndex + 1)"
+                               class="btn btn-default @nextDisabled">
+                                Next
+                            </a>
+                        }
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

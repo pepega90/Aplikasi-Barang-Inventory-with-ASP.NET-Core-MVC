@@ -1,0 +1,79 @@
+﻿@model KirimBarangViewModel
+
+@{
+    ViewData["Title"] = "Kirim Barang";
+}
+
+<body class="hold-transition sidebar-mini">
+    <partial name="NavPartial" />
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <!-- left column -->
+                    <div class="col-md-6">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Kirim Barang</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+
+                            <form role="form" asp-action="KirimBarang" method="post">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="KodeBarang">Pilih Kode Barang</label>
+                                        <select id="select-kode" asp-items="@Model.KodeBarang" class="custom-select">
+                                            <option value="">-- Pilih Kode Barang --</option>
+                                        </select>
+                                        <span asp-validation-for="KodeBarang" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="NamaBarang">Nama Barang</label>
+                                        <input class="form-control" asp-for="NamaBarang" placeholder="Nama Barang">
+                                        <span asp-validation-for="NamaBarang" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Dikirim"></label>
+                                        <input class="form-control" asp-for="Dikirim" placeholder="Tujuan Barang">
+                                        <span asp-validation-for="Dikirim" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total Jumlah Di Stock</label>
+                                        <input class="form-control" id="JumlahBarang"  placeholder="Jumlah Barang Di Stock">
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="JumlahBarang"></label>
+                                        <input class="form-control" asp-for="JumlahBarang" placeholder="Jumlah Barang">
+                                        <span asp-validation-for="JumlahBarang" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        var namaBarangField = document.getElementById("NamaBarang");
+        var jumlahBarangField = document.getElementById("JumlahBarang");
+        $("#select-kode").change(function () {
+            $.ajax({
+                type: "post",
+                url: "/Admin/GetData?kode=" + $(this).val(),
+                success: function (data) {
+                    namaBarangField.value = data.namaBarang;
+                    jumlahBarangField.value = data.jumlahBarang;
+                }
+            })
+        });
+    </script>
+</body>

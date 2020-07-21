@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BarangMasuk>
+
+@{
+    ViewData["Title"] = "Cetak Barang Masuk";
+
+    int angka = 0;
+}
+<body class="hold-transition sidebar-mini">
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <header>
+                                    <h4 class="text-left">PT. PogU Bersinar</h4>
+                                    <div class="text-left" style="border-radius: 25px;">
+                                        <img class="rounded-circle" height="100" width="100" src="~/img/pepega.png" />
+                                    </div>
+                                </header>
+                                <h3 class="text-center">Laporan Pemasukan Barang</h3>
+                            </div>
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kode Barang</th>
+                                            <th>Nama Barang</th>
+                                            <th>Asal Barang</th>
+                                            <th>Tanggal Masuk</th>
+                                            <th>Jumlah Barang</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var barang in Model)
+                                        {
+                                            ++angka;
+                                            <tr>
+                                                <td>@angka</td>
+                                                <td>@barang.KodeBarang</td>
+                                                <td>
+                                                    @barang.AsalBarang
+                                                </td>
+                                                <td>@barang.NamaBarang</td>
+                                                <td>@barang.Tanggal?.ToShortDateString()</td>
+                                                <td>@barang.JumlahBarang</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <h5 style="font-weight: bold;">Mengetahui</h5>
+                                <br />
+                                <h6>Admin</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        window.addEventListener("load", window.print());
+    </script>
+</body>

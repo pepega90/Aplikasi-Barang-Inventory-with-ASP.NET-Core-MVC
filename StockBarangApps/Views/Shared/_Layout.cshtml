@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StockBarangApps</title>
+    <!-- Font Awesome -->
+    <link href="~/Theme/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Theme/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="~/Theme/plugins/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Theme/dist/js/adminlte.min.js"></script>
+    <script src="~/Theme/dist/js/demo.js"></script>
+</head>
+
+@{
+    ViewData["Title"] = "Halaman Admin";
+}
+
+@RenderBody()
+
+@RenderSection("Scripts", required: false)
+
+</html>
