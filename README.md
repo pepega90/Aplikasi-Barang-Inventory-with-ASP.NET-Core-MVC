@@ -1,5 +1,5 @@
 # Aplikasi-Barang-Inventory-with-ASP.NET-Core-MVC
-Simple apps with ASP.NET Core MVC 3.1
+Simple apps with ASP.NET Core MVC
 
 default user
 ```
