@@ -8,4 +8,4 @@ E-Mail: admin@admin.com
 Password: admin1
 ```
 or you can create your own account
-by click "buat akun" button in login page
+by clicking "Buat Akun" button in login page
