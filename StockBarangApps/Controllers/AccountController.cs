@@ -46,12 +46,11 @@ namespace StockBarangApps.Controllers
                     Email = model.Email
                 };
 
-                await userManager.AddToRoleAsync(user, "Admin");
-
                 var userCreated = await userManager.CreateAsync(user, model.Password);
 
                 if (userCreated.Succeeded)
                 {
+                    await userManager.AddToRoleAsync(user, "Admin");
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Beranda", "Admin");
                 }
