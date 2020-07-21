@@ -1,9 +1,9 @@
 # Aplikasi-Barang-Inventory-with-ASP.NET-Core-MVC
 Simple apps with ASP.NET Core MVC 3.1
 
-for default user
+default user
 ```
-for Admin role
+Admin Role
 E-Mail: admin@admin.com
 Password: admin1
 ```
