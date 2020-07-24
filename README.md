@@ -9,13 +9,5 @@ Password: admin1
 ```
 atau Kamu bisa membuat akun dengan mengklik tombol "Buat Akun" di halaman login
 
-# Fitur
-* Role (Admin, Manager)
-* Login 
-* Register
-* Ganti Password
-* Barang Masuk
-* Barang Keluar
-* Pagination
-* Cetak Barang (Masuk/Keluar)
-* Daftar User
+## Acknowledgments
+* Thanks untuk AdminLTE, untuk free templatenya
