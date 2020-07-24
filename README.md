@@ -12,4 +12,4 @@ by default akunnya akan langsung mempunyai role ```Admin```, untuk mengubahnya k
 kamu bisa ke section daftar user dan mengubah rolenya
 
 ## Acknowledgments
-* Thanks untuk [AdminLTE](https://github.com/ColorlibHQ/AdminLTE)
+* Thank you [AdminLTE](https://github.com/ColorlibHQ/AdminLTE) for the template
