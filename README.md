@@ -7,5 +7,15 @@ Admin Role
 E-Mail: admin@admin.com
 Password: admin1
 ```
-or you can create your own account
-by clicking "Buat Akun" button in login page
+atau Kamu bisa membuat akun dengan mengklik tombol "Buat Akun" di halaman login
+
+# Fitur
+* Role (Admin, Manager)
+* Login 
+* Register
+* Ganti Password
+* Barang Masuk
+* Barang Keluar
+* Pagination
+* Cetak Barang (Masuk/Keluar)
+* Daftar User
