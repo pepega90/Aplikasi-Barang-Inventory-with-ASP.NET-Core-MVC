@@ -16,6 +16,8 @@ namespace StockBarangApps.ViewModels
         [Display(Name = "Asal Barang")]
         public string AsalBarang { get; set; }
 
+        [DisplayFormat(DataFormatString = "mm-dd-yyy")]
+        [DataType(DataType.Date)]
         [Required(ErrorMessage = "Tanggal Harus Diisi")]
         public DateTime? Tanggal { get; set; }
 
